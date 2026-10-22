@@ -1,0 +1,15 @@
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\bin\Debug\net10.0\PRiRKazLewLab1.exe
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\bin\Debug\net10.0\PRiRKazLewLab1.deps.json
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\bin\Debug\net10.0\PRiRKazLewLab1.runtimeconfig.json
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\bin\Debug\net10.0\PRiRKazLewLab1.dll
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\bin\Debug\net10.0\PRiRKazLewLab1.pdb
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\PRiRKazLewLab1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\PRiRKazLewLab1.AssemblyInfoInputs.cache
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\PRiRKazLewLab1.AssemblyInfo.cs
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\PRiRKazLewLab1.csproj.CoreCompileInputs.cache
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\PRiRKazLewLab1.dll
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\refint\PRiRKazLewLab1.dll
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\PRiRKazLewLab1.pdb
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\PRiRKazLewLab1.genruntimeconfig.cache
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\ref\PRiRKazLewLab1.dll
+C:\Users\student\source\repos\PRiRKazLewLab1\PRiRKazLewLab1\obj\Debug\net10.0\PRiRKazL.CE57B605.Up2Date
