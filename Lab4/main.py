@@ -172,6 +172,7 @@ def tabu_search_cuda(
     time_limit=None,
     tabu_tenure=25,
     threads_per_block=256,
+    warmup_iterations=3,
 ):
     if cp is None:
         raise RuntimeError("Brak biblioteki CuPy - wersja CUDA niedostępna")
@@ -198,6 +199,17 @@ def tabu_search_cuda(
     tabu_until = cp.full(num_moves, -1, dtype=cp.int32)
     out_distances = cp.empty(num_moves, dtype=cp.float64)
     route_gpu = cp.empty(num_cities, dtype=cp.int32)
+
+    for _ in range(warmup_iterations):
+        route_gpu.set(np.asarray(current_route, dtype=np.int32))
+        kernel(
+            (blocks,), (threads_per_block,),
+            (route_gpu, xs, ys, move_i, move_j, tabu_until,
+             np.int32(num_cities), np.int32(num_moves), np.int32(0),
+             np.float64(best_distance), out_distances),
+        )
+        best_index = int(cp.argmin(out_distances))
+        float(out_distances[best_index])
 
     cp.cuda.Device().synchronize()
     start_time = time.time()
@@ -261,21 +273,17 @@ if __name__ == "__main__":
     print(f"Całkowity dystans: {par_distance:.2f}, czas: {par_time:.2f} s")
 
     print("\nTabu Search - CUDA (GPU)")
-    if cp is not None:
-        random.seed(123)
-        cuda_route, cuda_distance, cuda_results, cuda_time = tabu_search_cuda(
-            cities, max_iterations=max_iterations, tabu_tenure=tabu_tenure
-        )
-        print(f"Całkowity dystans: {cuda_distance:.2f}, czas: {cuda_time:.2f} s")
-    else:
-        cuda_time = None
-        print("Pominięto - brak biblioteki CuPy")
+    random.seed(123)
+    cuda_route, cuda_distance, cuda_results, cuda_time = tabu_search_cuda(
+        cities, max_iterations=max_iterations, tabu_tenure=tabu_tenure
+    )
+    print(f"Całkowity dystans: {cuda_distance:.2f}, czas: {cuda_time:.2f} s")
 
     print("\n--- Porównanie ---")
-    print(f"Sekwencyjnie:           {seq_time:.2f} s")
+    print(f"Sekwencyjnie: {seq_time:.2f} s")
     print(f"Równolegle ({num_workers} proc.): {par_time:.2f} s, przyspieszenie {seq_time / par_time:.2f}x")
     if cuda_time is not None:
-        print(f"CUDA:                   {cuda_time:.2f} s, przyspieszenie {seq_time / cuda_time:.2f}x")
+        print(f"CUDA: {cuda_time:.2f} s, przyspieszenie {seq_time / cuda_time:.2f}x")
 
     with open("lista_tabu.txt", "w", encoding="utf-8") as plik:
         for element in par_results:
